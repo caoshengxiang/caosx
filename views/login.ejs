@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户登录</title>
+		<link rel="shortcut icon" href="/images/favicon.ico"/>
+		<style>
+		    p a{margin: 0 20px;}
+		</style>
+	</head>
+	<body>
+	    <div>
+	        <form action="home" method="post">
+	            <p>欢迎登陆&nbsp;<%= title %></p>
+                <p><input name="username" type="text" placeholder="输入用户名" /></p>
+                <p><input name="password" type="password" placeholder="输入密码"/></p>
+                <p><input type="submit" value="登录"/><a href="register">注册</a></p>
+	        </form>
+	    </div>
+	</body>
+</html>
