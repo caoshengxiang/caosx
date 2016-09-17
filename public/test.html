@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/jquery-3.0.0.min.js"></script>
+	</head>
+	<body>
+	    <div id="showJson">test ajax</div>
+	    
+	    <script>
+	        $.ajax({
+	        	type:"get",
+	        	url:"http://localhost:3000/users/zhang3",
+	        	async:true,
+	        	datyType: "binary",
+	        	success: function(data) {
+	        	    console.log(data);
+	        	    var str = '';
+	        	    for(var i = 0; i < data.length; i++) {
+	        	        str += "{username:" + data[i].username + "," + "password:" + data[i].password +"};\n";
+	        	    }
+	        	    
+	        	    $("#showJson").html(str);
+	        	},
+	        	error: function(err) {
+	        	    console.log(err);
+	        	}
+	        });
+	    </script>
+	</body>
+</html>

@@ -51,8 +51,6 @@ router.post('/home', function(req, res) {
               }
         })
     })(query_doc);
-    
-    
 })
 
 

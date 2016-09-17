@@ -1,0 +1,5 @@
+#忽略上传的文件
+
+.project
+node_modules/
+bin/
