@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-//var mongoose = require('mongoose');
+
+var crypto = require('crypto');//加载生成MD5值依赖模块
+
 var user = require('../models/user');
 
 
@@ -22,8 +24,11 @@ router.get('/register', function(req, res) {
    res.render('register'); 
 });
 
-router.post('/registerP', function(req, res) {
-   var doc = {username: req.body.username, password: req.body.password};
+router.post('/registerP', function(req, res) { 
+   var md5 = crypto.createHash('md5');
+   var pw = md5.update(req.body.password).digest('base64');
+   
+   var doc = {username: req.body.username, password: pw};
    console.log(doc);
    var addUser = new user.model(doc);
    addUser.save();
@@ -37,7 +42,8 @@ router.get('/404', function(req, res) {
 });
 
 router.post('/home', function(req, res) {
-    var query_doc = {username: req.body.username, password: req.body.password};
+    var md5 = crypto.createHash('md5');
+    var query_doc = {username: req.body.username, password: md5.update(req.body.password).digest('base64')};
     console.log(query_doc);
     (function(){
           user.model.count(query_doc, function(err, doc){
